@@ -79,7 +79,7 @@ router.post('/login', async(req, res) => {
                 .json({ success: false, message: 'Sai mật khẩu' })
 
         // nhả token
-        const accessToken = jwt.sign({ userId: user._id },
+        const accessToken = jwt.sign({ userId: user._id, role: user.role },
             process.env.ACCESS_TOKEN_SECRET
         )
 

@@ -14,65 +14,90 @@ router.get('/', verifyToken, async(req, res) => {
     }
 })
 
-router.post('/', verifyToken, async(req, res) => {
-    const { categoryName, discription } = req.body;
+router.post('/add', verifyToken, async(req, res) => {
+    const { categoryName } = req.body;
 
     if (!categoryName)
         return res
             .status(400)
-            .json({ success: false, message: 'Tên loại sản phẩm đã tồn tại' });
+            .json({ success: false, message: 'Tên loại sản phẩm không được để trống' });
 
     try {
-        const newCategory = new Category({ categoryName, discription });
+
+        const categorydb = await Category.findOne({ categoryName })
+
+        if (categorydb)
+            return res
+                .status(400)
+                .json({ success: false, message: 'Tên loại sản phẩm đã tồn tại' })
+
+        const newCategory = new Category({ categoryName });
         await newCategory.save();
+
         res.json({ success: true, message: 'Thêm loại sản phẩm mới thành công', category: newCategory });
     } catch (error) {
         res.status(500).json({ success: false, message: 'Có gì đó không ổn rồi đại vương, đã xảy ra lỗi' });
     }
 })
 
-router.put('/:id', verifyToken, async(req, res) => {
-    const { catecategoryName, discriptiongoryName } = req.body
+router.put('/update/:id', verifyToken, async(req, res) => {
+    const { categoryName } = req.body
 
-    // Simple validation
     if (!categoryName)
         return res
             .status(400)
             .json({ success: false, message: 'Tên loại sản phẩm không được để trống' })
 
     try {
-        let updatedPost = { categoryName, discription }
+        let updatedCate = { categoryName }
 
-        updatedPost = await Post.findOneAndUpdate(
-            updatedPost, { new: true }
+        //check role
+        const checkRole = req.role;
+        if (checkRole == 0)
+            return res
+                .status(400)
+                .json({ success: false, message: 'Bạn không có quyền' })
+
+        const categoryUpdateCondition = { _id: req.params.id }
+
+        updatedCate = await Category.findOneAndUpdate(
+            categoryUpdateCondition, updatedCate, { new: true }
         )
+
+        if (!updatedCate)
+            return res.status(401).json({ success: false, message: 'Đã xảy ra lỗi' })
 
         res.json({
             success: true,
-            message: 'Thành công',
-            post: updatedPost
+            message: 'Chỉnh sửa thành công',
+            category: updatedCate
         })
+
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: 'Đã xảy ra lỗi' })
     }
 })
 
-router.delete('/:id', verifyToken, async(req, res) => {
+router.delete('/delete/:id', verifyToken, async(req, res) => {
     try {
-        const deletedCategory = await Post.findOneAndDelete(postDeleteCondition)
+        const cateDeleteCondition = { _id: req.params.id }
+        const deletedCate = await Category.findOneAndDelete(cateDeleteCondition);
 
-        // User not authorised or post not found
-        if (!deletedCategory)
-            return res.status(401).json({
-                success: false,
-                message: 'Post not found or user not authorised'
-            })
+        //check role
+        const checkRole = req.role;
+        if (checkRole == 0)
+            return res
+                .status(400)
+                .json({ success: false, message: 'Bạn không có quyền' })
 
-        res.json({ success: true, category: deletedCategory })
+        if (!deletedCate)
+            return res.status(401).json({ success: false, message: 'Đã xảy ra lỗi' })
+
+        res.json({ success: true, message: 'Xóa loại sản phẩm thành công' })
     } catch (error) {
         console.log(error)
-        res.status(500).json({ success: false, message: 'Internal server error' })
+        res.status(500).json({ success: false, message: 'Đã xảy ra lỗi' })
     }
 })
 

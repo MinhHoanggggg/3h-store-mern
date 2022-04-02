@@ -4,30 +4,44 @@ Content-Type: application/json
 
 {
     "username": "minhhoangdeptrai1",
-    "password": "hehehee"
+    "password": "1"
 }
 
-###
+################################
 POST http://localhost:6969/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "hehe2",
-    "password": "hehehee"
+    "username": "minhhoangdeptrai1",
+    "password": "1"
 }
 
-###
-POST http://localhost:6969/api/category
+################################
+POST http://localhost:6969/api/category/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ3M2IxMjgxYTcxOGQ3MmE3ZmI2OWQiLCJpYXQiOjE2NDg4MzUzNDZ9.nNrMfSehq9pz8B7G5vJAyT7idWNcaGPrToH7UHdZ0C0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5MDMzNn0.Bwb7H8yyFlyG8KfDNtRZWcY2uOD9R5KSEQ4BVg3F1x8
 
 {
-    "categoryName": "hehe",
-    "discription": ""
+    "categoryName": "Áo rách"
 }
 
-###
-GET http://localhost:6969/api/category
+################################
+PUT http://localhost:6969/api/category/update/624800354713722a8391102b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+
+{
+    "categoryName": "Áo thun"
+}
+
+################################
+DELETE http://localhost:6969/api/category/delete/624822457454bae1f4757e1b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+
+################################
+GET http://localhost:6969/api/category/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ2ZDg2MjM1ZTRhMDIxMjgwZTQ1MDkiLCJpYXQiOjE2NDg4MzQyMjh9.FGPGXC-uRnsw_6YI0MMmwd39MKNqN3hx5Bl7DuJNaNM
+
 

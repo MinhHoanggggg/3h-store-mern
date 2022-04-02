@@ -1,10 +1,8 @@
 const express = require('express');
+const verifyToken = require('../middleware/auth');
 const router = express.Router();
 
-// const productController = require('../app/controller/ProductController');
+const Product = require('../app/models/Product');
 
-// router.use('/add-product', productController.addProduct);
-// router.use('/edit-product', productController.editProduct);
-// router.use('/delete-product', productController.deleteProduct);
 
 module.exports = router;
