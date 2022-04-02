@@ -1,0 +1,33 @@
+
+POST http://localhost:6969/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "minhhoangdeptrai1",
+    "password": "hehehee"
+}
+
+###
+POST http://localhost:6969/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "hehe2",
+    "password": "hehehee"
+}
+
+###
+POST http://localhost:6969/api/category
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ3M2IxMjgxYTcxOGQ3MmE3ZmI2OWQiLCJpYXQiOjE2NDg4MzUzNDZ9.nNrMfSehq9pz8B7G5vJAyT7idWNcaGPrToH7UHdZ0C0
+
+{
+    "categoryName": "hehe",
+    "discription": ""
+}
+
+###
+GET http://localhost:6969/api/category
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ2ZDg2MjM1ZTRhMDIxMjgwZTQ1MDkiLCJpYXQiOjE2NDg4MzQyMjh9.FGPGXC-uRnsw_6YI0MMmwd39MKNqN3hx5Bl7DuJNaNM
+
