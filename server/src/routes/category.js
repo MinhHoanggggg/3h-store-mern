@@ -6,8 +6,8 @@ const Category = require('../app/models/Category');
 
 router.get('/', verifyToken, async(req, res) => {
     try {
-        const posts = await Category.find({})
-        res.json({ success: true, posts })
+        const categories = await Category.find({})
+        res.json({ success: true, categories })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: 'Có gì đó không ổn rồi đại vương, đã xảy ra lỗi' });

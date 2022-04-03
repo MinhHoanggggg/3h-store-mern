@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-mongoose.plugin(slug);
-
 const Product = new Schema({
     productName: String,
     price: Number,
