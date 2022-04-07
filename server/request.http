@@ -26,7 +26,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4M
 }
 
 ################################
-PUT http://localhost:6969/api/category/update/624800354713722a8391102b
+GET http://localhost:6969/api/product
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MGFlNjA1YmJhMmIyYzgxNzk3NDYiLCJyb2xlIjoiMCIsImlhdCI6MTY0ODk5Njk5M30.qCDNMJtAU97oUnjEA8OUvUJ6smyDVyzdjtPQEV2tH90
 
@@ -47,11 +47,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ2Z
 ################################
 POST http://localhost:6969/api/product/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MGFlNjA1YmJhMmIyYzgxNzk3NDYiLCJyb2xlIjoiMCIsImlhdCI6MTY0OTMxNTEyN30.oUUp4wGfFIFK0OVvHg-3K-ARxVSdNvZJGjMRel0oeMs
 
 {
  "productName": "Vest Nam",
-      "price": 1000000,
+      "price": 10000000,
       "description": "Kiểu dáng: Anh Quốc hai khuy, ve peak, sang trọng cách tân dựa trên tỷ lệ hình thể người đàn ông Việt Nam giúp bộ đồ trông sang trọng nhưng vẫn giữ được sự trẻ trung và hạn chế khuyết điểm.\nCấu trúc: Full canvas - giúp tôn hình thể người đàn ông.\nKiểu dệt Twill là cách dệt sử dụng lần lượt 2 sợi vải ngang nằm dưới và sau đó là nằm trên 2 sợi vải dọc tạo nên một bề mặt các đường vân chéo đặc biệt. Loại vải vân chéo này dày và mềm mại, có khả năng chống nhăn khá tốt và dễ dàng là ủi.\nSơ mi phù hợp: Đen, đỏ đô, trắng, xám\n\nSuit với tone màu tối là một trong những bộ Suit thông dụng của người đàn ông được sử dụng với nhiều mục đích và hoàn cảnh khác nhau. Bộ Suit 283 với ve peak còn tạo hiệu ứng thị giác trong mắt người đối diện giúp tôn chiều cao và còn tạo nên hình ảnh quyền lực khi bạn muốn gây ảnh hưởng đối với mọi người.\n\nChất liệu vải được sử dụng 80% cotton và 20% poly, sợi vải giày giúp bộ Suit thoáng mát, thấm hút tốt và vẫn giữ phom, hạn chế nhăn nhàu.\n",
       "amount": "1",
       "img": "google.com",
@@ -59,8 +59,47 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4M
 }
 
 ########################
-DELETE http://localhost:6969/api/product/delete/6249b72e89f2559c5bbc19aa
+GET http://localhost:6969/api/auth
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
 
+########################
+GET http://localhost:6969/api/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+
+{
+    "idUser": "hehe"
+}
+
+#########################
+POST http://localhost:6969/api/cart/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+
+{
+    "idUser": "hehe",
+    "qty": 1,
+    "productName": "Áo vest kẻ ghi sáng"
+}
+
+############################
+DELETE http://localhost:6969/api/cart/delete/624edaf11b8409e085b9e205
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+
+{
+    "idUser": "hehe",
+    "productName": "Áo vest kẻ ghi sáng"
+}
+
+#######################
+
+PUT http://localhost:6969/api/cart/update/624edb72a892658c1328b42d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+
+{
+    "qty": 4
+}
 
