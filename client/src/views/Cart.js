@@ -6,23 +6,28 @@ import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import {CartContext} from '../contexts/CartContext';
 import sp from '../assets/img/Suit1.webp'
-import { BsFillTrashFill } from "react-icons/bs";
-import { useContext } from 'react';
+import { useContext, useEffect  } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import { AuthContext } from '../contexts/AuthContext';
+import CartItem from '../components/layout/Cart/CartItem'
 
 const Cart = () => {
+    
     const {
-		cartState: { cartsLoading, carts}
+		cartState: { cartsLoading, carts, cartTotal},
+        getCarts
 	} = useContext(CartContext)
 
-    const {
-		authState: { isAuthenticated }
+	const {
+		authState: {
+			user: { _id }
+		},
 	} = useContext(AuthContext)
 
+    //get cart 
+    useEffect(() => getCarts(_id), [_id]);
 
     let body;
-
 
     if(cartsLoading)
         body = (
@@ -36,65 +41,44 @@ const Cart = () => {
     body = (
         <>
             <MiniBanner />
-            <Container>
-                <h2 className='mt-3 h2'>Giỏ hàng</h2>
-                <div className="wrapper">
-                <Table className="cart-table full table--responsive">
-                            <thead className="cart__row cart__header-labels">
-                                <tr>
-                                    <th colspan="2" className="text-center">Thông tin chi tiết sản phẩm</th>
-                                    <th className="text-center">Đơn giá</th>
-                                    <th className="text-center">Số lượng</th>
-                                    <th className="text-right">Tổng giá</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr className="cart__row">
-                                        <td data-label="Sản phẩm">
-                                            <img width={150} height={200} src={sp} >
-                                            
-                                            </img>
-                                        </td>
-                                        <td>
-                                            <div className="h4">Áo vest Xanh kẻ - AV283</div>
 
-                                            <span className="h4">48</span>
-                                        </td>
-                                        <td data-label="Đơn giá">
-                                            <span className="h3">
-									            2,950,000₫
-								            </span>
-                                        </td>
-                                        <td data-label="Số lượng">
-                                            <div className="js-qty">
-                                                <button type="button" className="js-qty__adjust js-qty__adjust--minus icon-fallback-text" data-id="" data-qty="0">
-                                                    <span className="icon icon-minus" aria-hidden="true"></span>
-                                                    <span className="fallback-text" aria-hidden="true">−</span>
-                                                    <span className="visually-hidden">Giảm số lượng sản phẩm đi 1</span>
-                                                </button>
-                                                
-                                                    <input type="text" class="js-qty__num" value="1" min="1" data-id="" aria-label="quantity" pattern="[0-9]*" name="updates[]" id="updates_" />
-                                                <button type="button" class="js-qty__adjust js-qty__adjust--plus icon-fallback-text" data-id="" data-qty="11">
-                                                    <span className="icon icon-plus" aria-hidden="true"></span>
-                                                    <span className="fallback-text" aria-hidden="true">+</span>
-                                                    <span className="visually-hidden">Tăng số lượng sản phẩm lên 1</span>
-                                                </button>
-                                            </div>
-                                        </td>
-                                        <td data-label="Tổng giá" className="text-right">
-                                            <span className="h3">
-									            2,950,000₫
-								            </span>
-                                        </td>
-                                            <td className="text cart__remove">
-                                                <a href="/" className="h4"><BsFillTrashFill size={20}/></a>
-                                            </td>
-                                        </tr>
-                                </tbody>
-                        </Table>
+            <Container>
+                <h2 className='mt-4 h2 text-left'>Giỏ hàng</h2>
+                <div className="wrapper">
+                    <Table className="cart-table full table--responsive">
+                        <thead className="cart__row cart__header-labels">
+                            <tr>
+                                <th colspan="2" className="text-center">Thông tin chi tiết sản phẩm</th>
+                                <th className="text-center">Đơn giá</th>
+                                <th className="text-center">Số lượng</th>
+                                <th className="text-right">Tổng giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {carts.map(cart => (
+                                <CartItem cart={cart} />
+                            ))}
+
+                        </tbody>
+                    </Table>
+
+                    <div className="cart__row">
+                        <div className="grid__item text-right one-third small--one-whole">
+                            <p>
+                                <span className="cart__subtotal-title h4">Tổng tiền </span>
+                                <span className="cart__subtotal h3">{cartTotal}</span>
+                            </p>
+                                <button class="btn btn-outline-success m-2">Cập nhật</button>
+                                <button type="submit" class="btn btn-outline-success">Thanh toán</button>
+                        </div>
+                    </div>
                 </div>
             </Container>
+
         </>
+
+        
     )
 
     return (
@@ -102,6 +86,7 @@ const Cart = () => {
 			{body}
 		</div>
 	)
+    
 }
 
 export default Cart

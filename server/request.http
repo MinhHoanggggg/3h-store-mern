@@ -3,7 +3,7 @@ POST http://localhost:6969/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "minhhoangdeptrai1",
+    "username": "minhhoangdeptrai",
     "password": "1"
 }
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 ################################
 POST http://localhost:6969/api/category/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5MDMzNn0.Bwb7H8yyFlyG8KfDNtRZWcY2uOD9R5KSEQ4BVg3F1x8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MGFlNjA1YmJhMmIyYzgxNzk3NDYiLCJyb2xlIjoiMCIsImlhdCI6MTY0OTM1MDM1MX0.AaPz6jGr9A6lvk65Q8OG4940TAYSRom6RbCayQSWwYY
 
 {
     "categoryName": "Áo rách"
@@ -47,7 +47,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ2Z
 ################################
 POST http://localhost:6969/api/product/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MGFlNjA1YmJhMmIyYzgxNzk3NDYiLCJyb2xlIjoiMCIsImlhdCI6MTY0OTMxNTEyN30.oUUp4wGfFIFK0OVvHg-3K-ARxVSdNvZJGjMRel0oeMs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MGFlNjA1YmJhMmIyYzgxNzk3NDYiLCJyb2xlIjoiMCIsImlhdCI6MTY0OTM1MDM1MX0.AaPz6jGr9A6lvk65Q8OG4940TAYSRom6RbCayQSWwYY
 
 {
  "productName": "Vest Nam",
@@ -64,21 +64,17 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
 
 ########################
-GET http://localhost:6969/api/cart
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+GET http://localhost:6969/api/cart/6248082db5b60d2a5bfda078
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0OTM0NjQ1NX0.VQqo7vDAl1IV6dQzfd19AA2mJ-qBDxQo8SrCD_X8nn0
 
-{
-    "idUser": "hehe"
-}
 
-#########################
+#########################   
 POST http://localhost:6969/api/cart/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0OTM0NTE3N30.7OdTG7YTYl3zcauANm9TfY3md6svzkOHyhB_Xc-aJoc
 
 {
-    "idUser": "hehe",
+    "idUser": "6248082db5b60d2a5bfda078",
     "qty": 1,
     "productName": "Áo vest kẻ ghi sáng"
 }
@@ -95,11 +91,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4M
 
 #######################
 
-PUT http://localhost:6969/api/cart/update/624edb72a892658c1328b42d
+PUT http://localhost:6969/api/cart/update/624f1b4a65f6224f96c1b090
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlIjoiMSIsImlhdCI6MTY0ODg5Mjc2NX0.zkJL8acWFWmtHca9bSbNxqZck56M_R4NLQ5e6XSn3AI
 
 {
-    "qty": 4
+    "qty": 2
 }
 

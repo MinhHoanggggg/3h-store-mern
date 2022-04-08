@@ -9,12 +9,13 @@ import ListProduct from './views/ListProduct';
 import Lookbook from './views/Lookbook';
 import Cart from './views/Cart';
 import Introduce from './views/Introduce';
-import ProductContextProvider from './contexts/ProductContext';
+import CartContextProvider from './contexts/CartContext';
 
 function App() {
     return (	
 		<AuthContextProvider>
-			<Router>
+			<CartContextProvider>
+				<Router>
 					<Switch>
 						<Route exact path='/' component={Landing} />
 						<Route
@@ -34,6 +35,7 @@ function App() {
 						<ProtectedRoute exact path='/lookbook' component={Lookbook} />
 					</Switch>
 				</Router>
+			</CartContextProvider>
 		</AuthContextProvider>
 	)
 }
