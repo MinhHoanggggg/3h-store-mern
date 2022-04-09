@@ -1,11 +1,7 @@
 import MiniBanner from '../components/layout/MiniBanner'
-import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import {CartContext} from '../contexts/CartContext';
-import sp from '../assets/img/Suit1.webp'
 import { useContext, useEffect  } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import { AuthContext } from '../contexts/AuthContext';
@@ -50,8 +46,9 @@ const Cart = () => {
                             <tr>
                                 <th colspan="2" className="text-center">Thông tin chi tiết sản phẩm</th>
                                 <th className="text-center">Đơn giá</th>
+                                <th className="text-center">Tổng giá</th>
                                 <th className="text-center">Số lượng</th>
-                                <th className="text-right">Tổng giá</th>
+                                <th className="text-left">Xóa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,9 +79,11 @@ const Cart = () => {
     )
 
     return (
-		<div className='landing-inner bg-white'>
+		<>
+        <div className='landing-inner bg-white'>
 			{body}
 		</div>
+        </>
 	)
     
 }
